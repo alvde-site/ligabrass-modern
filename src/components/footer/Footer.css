@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Главный контейнер подвала
+   ========================================================================== */
+.footer-div {
+  width: 100%;
+  padding: 32px 0;
+  margin-top: auto; 
+  border-top: 1px solid rgba(255, 255, 255, 0.06); /* Едва заметная благородная линия на антраците */
+  background-color: var(--color-anthracite);
+}
+
+.footer-content-wrap {
+  width: 95%;
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   Текстовые элементы
+   ========================================================================== */
+.footer-text {
+  font-family: var(--font-medium);
+  color: var(--color-text-silver);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.1px;
+}
+
+/* ==========================================================================
+   📱 Мобильная адаптивность (до 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .footer-div {
+    padding: 24px 0;
+  }
+
+  .footer-content-wrap {
+    gap: 12px;
+  }
+
+  .footer-text {
+    font-size: 0.9rem;
+  }
+}
