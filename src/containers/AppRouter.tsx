@@ -3,7 +3,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { settings } from "../data/settings";
 
 // Временные заглушки для страниц (на Шаге 5 мы заменим их на реальные файлы)
-const Home = () => <div style={{ padding: '20px' }}>Страница: Главная</div>;
+import Home from "../pages/home/HomeComponent";
 const Splash = () => <div style={{ padding: '20px' }}>Страница: Splash</div>;
 const Experience = () => <div style={{ padding: '20px' }}>Страница: Хроника и новости</div>;
 const Education = () => <div style={{ padding: '20px' }}>Страница: О квинтете</div>;

@@ -19,7 +19,9 @@ export interface GreetingData {
   logo_name: string;
   subTitle: string;
   resumeLink: string;
+  nickname?: string;
 }
+
 
 export interface SocialLink {
   name: string;
@@ -180,3 +182,23 @@ export interface MediaPageData {
   videoList: VideoItem[];
   albumList: AlbumItem[];
 }
+
+export interface ConcertTicket {
+  title: string;
+  alt_name: string;
+  concert_city: string;
+  concert_hall: string;
+  concert_time: string;
+  concert_date: string;
+  concert_year: string;
+  concert_day: string;
+  concert_place: string;
+  concert_info: string;
+  concert_workslist: string[];
+  concert_artists: string[];
+  more_button: string;
+  buy_button: string;
+  concert_poster: string;
+  concert_address?: string; // Добавляем опциональное текстовое поле адреса
+}
+
