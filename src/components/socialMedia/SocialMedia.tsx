@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVk, faTelegram, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import type { SocialLink } from "../../types/portfolio";
 import "./SocialMedia.css";
 
@@ -7,19 +9,20 @@ interface SocialMediaProps {
 }
 
 const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
-  if (!links || links.length === 0) {
-    return null;
-  }
+  if (!links || links.length === 0) return null;
+
+  // Мапа для сопоставления старых строковых названий с новыми типизированными SVG-объектами
+  const iconMap: { [key: string]: any } = {
+    "fa-vk": faVk,
+    "fa-telegram": faTelegram,
+    "fa-google": faGoogle,
+  };
 
   return (
     <div className="social-media-container">
       {links.map((media, i) => {
-        // Защитный хак: определяем правильный префикс для FontAwesome v6
-        // Если это VK, Telegram или бренд — ставим fa-brands, иначе fa-solid
-        const isBrand = media.fontAwesomeIcon.includes("vk") || 
-                        media.fontAwesomeIcon.includes("telegram") || 
-                        media.fontAwesomeIcon.includes("google");
-        const prefix = isBrand ? "fa-brands" : "fa-solid";
+        const iconDefinition = iconMap[media.fontAwesomeIcon];
+        if (!iconDefinition) return null;
 
         return (
           <a
@@ -34,8 +37,7 @@ const SocialMedia: React.FC<SocialMediaProps> = ({ links }) => {
               className="social-icon-wrapper"
               style={{ '--icon-bg-color': media.backgroundColor } as React.CSSProperties}
             >
-              {/* Подставляем вычисленный префикс вместо старого fab */}
-              <i className={`${prefix} ${media.fontAwesomeIcon}`}></i>
+              <FontAwesomeIcon icon={iconDefinition} />
             </span>
           </a>
         );

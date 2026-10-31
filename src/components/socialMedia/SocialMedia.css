@@ -1,34 +1,48 @@
 .social-media-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .social-icon-button {
   text-decoration: none;
   display: inline-block;
-  margin-bottom: 5px;
 }
 
-.social-icon-wrapper i {
-  color: #ffffff;
+.social-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  display: inline-block;
-  font-size: 1.3rem;
+  
+  /* Идеальный размер кружочка из старого проекта */
   height: 2.6rem;
   width: 2.6rem;
-  line-height: 2.6rem;
-  text-align: center;
-  user-select: none;
+  
+  /* Подставляем цвет круга из базы данных (backgroundColor) */
   background-color: var(--icon-bg-color);
+  
   transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* При наведении иконка мягко перекрашивается в фирменную латунь */
-.social-icon-button:hover .social-icon-wrapper i {
+/* Стилизация самого SVG-логотипа внутри круга */
+.social-icon-wrapper svg {
+  /* Логотипы внутри кругов становятся кристально белыми, а не черными */
+  color: #ffffff; 
+  font-size: 1.3rem;
+}
+
+/* ЭФФЕКТ НАВЕДЕНИЯ по канонам Лиги Брасс:
+   При ховере круг плавно перекрашивается в сияющую латунь, а иконка становится антрацитовой */
+.social-icon-button:hover .social-icon-wrapper {
   background-color: var(--color-brass);
   transform: translateY(-2px);
+}
+
+.social-icon-button:hover .social-icon-wrapper svg {
+  color: var(--color-anthracite);
 }
 
 /* ==========================================================================
