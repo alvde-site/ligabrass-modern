@@ -1,0 +1,106 @@
+.experience-accord {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.accord-panel-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Заголовок панели (Кнопка) в фирменном антрацитовом стиле
+   ========================================================================== */
+.accord-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 24px;
+  background-color: var(--color-hover-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.accord-panel-title {
+  font-family: var(--font-medium);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+  transition: color 0.25s ease;
+}
+
+.accord-toggle-icon {
+  color: var(--color-text-silver);
+  font-size: 1rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
+}
+
+/* ==========================================================================
+   Интерактивные состояния (Ховер и Активное состояние)
+   ========================================================================== */
+.accord-panel-header:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(228, 168, 52, 0.3);
+}
+
+.accord-panel-header:hover .accord-panel-title,
+.accord-panel-header:hover .accord-toggle-icon {
+  color: var(--color-brass);
+}
+
+/* Когда панель раскрыта — фиксируем латунный отблеск */
+.accord-panel-header.expanded {
+  border-color: rgba(228, 168, 52, 0.4);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.accord-panel-header.expanded .accord-panel-title {
+  color: var(--color-brass);
+}
+
+/* Плавный переворот шеврона при раскрытии */
+.accord-panel-header.expanded .accord-toggle-icon {
+  transform: rotate(-180deg);
+  color: var(--color-brass);
+}
+
+/* ==========================================================================
+   Контентная область (Плавный CSS-аккордеон)
+   ========================================================================== */
+.accord-panel-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.accord-panel-content.open {
+  grid-template-rows: 1fr;
+}
+
+.accord-panel-inner {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 0 12px 0; /* Отступы для внутренней ленты карточек */
+}
+
+/* Адаптивность под мобильные экраны */
+@media (max-width: 768px) {
+  .accord-panel-header {
+    padding: 14px 20px;
+  }
+  
+  .accord-panel-title {
+    font-size: 1.05rem;
+  }
+}
