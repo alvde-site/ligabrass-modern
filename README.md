@@ -1,75 +1,57 @@
-# React + TypeScript + Vite
+# Лига Брасс — Официальный сайт творческого коллектива
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Современное высокопроизводительное SPA-приложение (Single Page Application) для академического брасс-квинтета **«Лига Брасс»**, разработанное на базе экосистемы React и TypeScript.
 
-Currently, two official plugins are available:
+## 🛠 Технологический стек и архитектура
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Проект переведён на современный, легковесный стек разработки, обеспечивающий максимальную скорость загрузки и 100 баллов в аудите Google Lighthouse:
 
-## React Compiler
+*   **Runtime & Сборщик:** [Vite 8](https://vite.dev) + [Oxc Transformer](https://oxc.rs) — молниеносная компиляция и HMR (Fast Refresh).
+*   **Компонентная база:** [React 19](https://react.dev/) (Функциональные компоненты + Хуки).
+*   **Типизация:** [TypeScript 7](https://typescriptlang.org) — строгие интерфейсы данных (`ArchiveEvent`, `ConcertTicket`, `MusicianMainCard`).
+*   **Маршрутизация:** [React Router 7](https://reactrouter.com) — декларативный роутинг и сквозной поиск по ID.
+*   **Графика и иконки:** [@fortawesome/react-fontawesome](https://fontawesome.com) — изоляция пиктограмм в виде автономных SVG-элементов.
+*   **Стилизация:** Нативный CSS3 с использованием дизайн-токенов (`--color-brass`, `--color-anthracite`). Полный отказ от `float` и директив `!important`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📦 Структура данных и папок (`src/`)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+Данные полностью изолированы от логики отображения страниц и разнесены по контентным модулям:
+```text
+src/
+├── assets/images/          # Физические медиаресурсы (подпапки /musicians/ и /concerts/)
+├── components/             # Изолированные UI-элементы (Header, TopButton, SocialMedia)
+├── containers/             # Крупные логические блоки (AppRouter, ExperienceAccordion)
+├── data/                   # Контентные модули (certifications.ts, projects.ts, media.ts)
+├── pages/                  # Страницы приложения (Home, Projects, Experience, ArchiveDetails)
+├── types/                  # Описания строгих интерфейсов типов данных TypeScript
+└── index.css               # Глобальные стили, переменные палитры и подключение шрифтов
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Команды для локальной разработки и сборки
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+В терминале проекта доступны следующие системные скрипты:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+### Запуск сервера разработки
+```bash
+npm run dev
 ```
+Запускает локальный сервер на `http://localhost:5173` с мгновенным обновлением интерфейса при сохранении кода.
+
+### Проверка типов и Production-сборка
+```bash
+npm run build
+```
+Компилятор TypeScript (`tsc -b`) проверяет проект на отсутствие ошибок типизации, после чего Vite минифицирует код и собирает готовый автономный сайт в папку **`dist/`**.
+
+### Публикация сайта на хостинг
+```bash
+npm run deploy
+```
+Автоматически запускает сборку свежего кода и деплоит содержимое папки `dist/` на сервера GitHub Pages под управление вашего домена `ligabrass.ru`.
+
+## ⚙️ Особенности конфигурации Single Page Application (SPA)
+
+Сайт использует веб-роутинг на стороне клиента. Для предотвращения ошибок `404 Not Found` при обновлении глубоких страниц (например, `/archive/id-события`) или прямых заходах из поисковых систем:
+1. В корне папки `public/` размещён скрипт-перехватчик **`404.html`**, который ловит битый URL и безопасно редиректит его на главную страницу приложения.
+2. В файле **`AppRouter.tsx`** интегрирован декодер, который мгновенно расшифровывает параметры перехода и бесшовно открывает запрашиваемый филармонический материал.
+3. Служебный файл **`CNAME`** автоматически связывает сборку с вашим основным доменом `ligabrass.ru`.
