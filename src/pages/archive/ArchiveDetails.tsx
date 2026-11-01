@@ -36,7 +36,7 @@ const ArchiveDetails: React.FC = () => {
         (x) =>
           cleanStr(x.id) === targetId ||
           cleanStr(x.title) === targetId ||
-          cleanStr(encodeURIComponent(x.title)) === targetId
+          cleanStr(encodeURIComponent(x.title)) === targetId,
       );
       if (found) {
         item = {
@@ -50,7 +50,7 @@ const ArchiveDetails: React.FC = () => {
           news_date: found.news_date,
           location: found.location,
           fullStory: found.fullStory,
-          reviews: found.reviews
+          reviews: found.reviews,
         };
         break;
       }
@@ -63,7 +63,7 @@ const ArchiveDetails: React.FC = () => {
       (x) =>
         cleanStr(x.id) === targetId ||
         cleanStr(x.title) === targetId ||
-        cleanStr(encodeURIComponent(x.title)) === targetId
+        cleanStr(encodeURIComponent(x.title)) === targetId,
     );
     if (foundProgram) {
       item = {
@@ -75,13 +75,31 @@ const ArchiveDetails: React.FC = () => {
         poster: foundProgram.poster,
         duration: foundProgram.duration,
         location: foundProgram.location,
-        programList: foundProgram.programList
+        programList: foundProgram.programList,
       };
     }
   }
 
   const getPosterUrl = (posterPath: string) => {
-    return new URL(`../../assets/images/${posterPath}`, import.meta.url).href;
+    // 1. Намертво очищаем путь от старых префиксов папок, если они зашиты в базу данных
+    const cleanPath = posterPath
+      .replace("concerts/", "")
+      .replace("musicians/", "");
+
+    // 2. Умное автоматическое определение подпапки на основе типа контента
+    // Если тип "program" или "news" или "archive" — картинка лежит в concerts, иначе в musicians
+    const subFolder =
+      item?.type === "program" ||
+      item?.type === "news" ||
+      item?.type === "archive"
+        ? "concerts"
+        : "musicians";
+
+    // 3. Формируем чистый абсолютный путь от корня src для сборщика Vite
+    return new URL(
+      `/src/assets/images/${subFolder}/${cleanPath}`,
+      window.location.origin,
+    ).href;
   };
 
   // Защитный экран: если материала с таким ID не существует
@@ -102,7 +120,6 @@ const ArchiveDetails: React.FC = () => {
     <div className="archive-details-main page__main fade-in-up">
       <div className="archive-details-container">
         <div className="article-layout">
-          
           {/* Левая колонка: Большая афиша / Постер события */}
           {item.poster && (
             <div className="article-sidebar">
@@ -118,18 +135,22 @@ const ArchiveDetails: React.FC = () => {
           <div className="article-content">
             <div className="article-meta-line">
               {item.duration && (
-                <span className="article-tag-duration">
-                  {item.duration}
-                </span>
+                <span className="article-tag-duration">{item.duration}</span>
               )}
               {item.news_date && (
                 <span className="article-tag-date">
-                  <span role="img" aria-label="Календарь">📅</span> {item.news_date}
+                  <span role="img" aria-label="Календарь">
+                    📅
+                  </span>{" "}
+                  {item.news_date}
                 </span>
               )}
               {item.location && (
                 <span className="article-tag-location">
-                  <span role="img" aria-label="Локация">📍</span> {item.location}
+                  <span role="img" aria-label="Локация">
+                    📍
+                  </span>{" "}
+                  {item.location}
                 </span>
               )}
             </div>
@@ -137,9 +158,7 @@ const ArchiveDetails: React.FC = () => {
             <h1 className="article-title">{item.title}</h1>
             <h3 className="article-subtitle">{item.company}</h3>
 
-            <p className="article-lead-desc">
-              {item.description}
-            </p>
+            <p className="article-lead-desc">{item.description}</p>
 
             {/* 🎼 АДАПТИВНЫЙ БЛОК I: Концертная программа (Список произведений) */}
             {item.type === "program" && item.programList && (
@@ -189,7 +208,6 @@ const ArchiveDetails: React.FC = () => {
                 : "← Назад к хронике"}
             </Link>
           </div>
-
         </div>
       </div>
     </div>

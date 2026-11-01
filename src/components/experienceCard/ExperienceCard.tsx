@@ -10,9 +10,13 @@ interface ExperienceCardProps {
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
-  // Пуленепробиваемый метод динамического получения путей к картинкам в Vite
+  // Точный и пуленепробиваемый метод динамического импорта изображений концертов в Vite
   const getLogoUrl = (logoPath: string) => {
-    return new URL(`../../assets/images/${logoPath}`, import.meta.url).href;
+    // Намертво отрезаем "concerts/", если строка в данных уже содержит эту папку
+    const cleanPath = logoPath.replace("concerts/", "");
+    
+    // Формируем чистый абсолютный путь от корня src для сборщика Vite
+    return new URL(`/src/assets/images/concerts/${cleanPath}`, window.location.origin).href;
   };
 
   return (
