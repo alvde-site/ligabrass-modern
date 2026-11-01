@@ -12,17 +12,11 @@ import ArchiveDetails from "../pages/archive/ArchiveDetails";
 import Education from "../pages/education/EducationComponent";
 import GalleryAlbum from "../pages/opensource/GalleryAlbum";
 import MusicianPage from "../pages/musician/MusicianPage";
+import Splash from "../pages/splash/Splash";
 
 
 
 // ВРЕМЕННЫЕ ЛЕГКОВЕСНЫЕ ЗАГЛУШКИ ДЛЯ ОСТАВШИХСЯ СТРАНИЦ (ПЕРЕВЕДЕНЫ НА ЧИСТЫЙ TSX):
-const Splash: React.FC = () => (
-  <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-brass)' }}>
-    <h2>ЛИГА БРАСС</h2>
-    <p>Загрузка SPA-приложения...</p>
-  </div>
-);
-
 const Error404: React.FC = () => (
   <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-brass)' }}>
     <h1>Ошибка 404</h1>
