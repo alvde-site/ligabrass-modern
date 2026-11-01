@@ -9,6 +9,10 @@ import Experience from "../pages/experience/Experience";
 import Opensource from "../pages/opensource/Opensource";
 import Contact from "../pages/contact/ContactComponent";
 import ArchiveDetails from "../pages/archive/ArchiveDetails";
+import Education from "../pages/education/EducationComponent";
+import GalleryAlbum from "../pages/opensource/GalleryAlbum";
+
+
 
 // ВРЕМЕННЫЕ ЛЕГКОВЕСНЫЕ ЗАГЛУШКИ ДЛЯ ОСТАВШИХСЯ СТРАНИЦ (ПЕРЕВЕДЕНЫ НА ЧИСТЫЙ TSX):
 const Splash: React.FC = () => (
@@ -18,24 +22,10 @@ const Splash: React.FC = () => (
   </div>
 );
 
-const Education: React.FC = () => (
-  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
-    <h1>О квинтете</h1>
-    <p>Раздел находится в процессе наполнения академическим контентом.</p>
-  </div>
-);
-
 const MusicianPage: React.FC = () => (
   <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
     <h1>Карточка музыканта</h1>
     <p>Творческая биография солиста Национального филармонического оркестра России.</p>
-  </div>
-);
-
-const GalleryAlbum: React.FC = () => (
-  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
-    <h1>Фотоальбом</h1>
-    <p>Просмотр бэкстейджа и хроники будней коллектива.</p>
   </div>
 );
 

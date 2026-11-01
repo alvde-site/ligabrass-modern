@@ -1,0 +1,104 @@
+.gallery-album-main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.album-container {
+  width: 95%;
+  max-width: 1150px;
+  margin: 40px auto 80px auto;
+}
+
+.album-inner-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 40px;
+  gap: 12px;
+}
+
+.album-nav-back {
+  font-family: var(--font-medium);
+  color: var(--color-brass);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.album-nav-back:hover {
+  opacity: 0.8;
+}
+
+.album-inner-title {
+  font-family: var(--font-medium);
+  color: #ffffff;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.album-inner-desc {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 750px;
+}
+
+/* Сетка фотографий внутри альбома */
+.album-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.album-photo-card {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 4 / 3; 
+  background-color: var(--color-hover-bg);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.album-photo-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(228, 168, 52, 0.4);
+}
+
+.album-inner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-error-container {
+  text-align: center;
+  padding: 120px 20px;
+  color: var(--color-text-silver);
+}
+
+/* ==========================================================================
+   📱 Мобильная адаптивность внутренней фотосетки
+   ========================================================================== */
+@media (max-width: 768px) {
+  .album-inner-title {
+    font-size: 1.75rem;
+  }
+
+  .album-photos-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .album-photos-grid {
+    grid-template-columns: 1fr; 
+  }
+}
