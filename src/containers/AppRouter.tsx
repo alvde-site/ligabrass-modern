@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { settings } from "../data/settings";
 
-// НАСТОЯЩИЕ ИСПРАВЛЕННЫЕ СТРАНИЦЫ (ИМПОРТИРУЕМ ГОТОВЫЙ СТЕК ШАГА 5):
+// НАСТОЯЩИЕ ИСПРАВЛЕННЫЕ СТРАНИЦЫ (ИМПОРТИРУЕМ ГОТОВЫЙ СТЕК ШАГА 5 И 6):
 import Home from "../pages/home/HomeComponent";
 import Projects from "../pages/projects/Projects";
 import Experience from "../pages/experience/Experience";
 import Opensource from "../pages/opensource/Opensource";
 import Contact from "../pages/contact/ContactComponent";
+import ArchiveDetails from "../pages/archive/ArchiveDetails";
 
 // ВРЕМЕННЫЕ ЛЕГКОВЕСНЫЕ ЗАГЛУШКИ ДЛЯ ОСТАВШИХСЯ СТРАНИЦ (ПЕРЕВЕДЕНЫ НА ЧИСТЫЙ TSX):
 const Splash: React.FC = () => (
@@ -28,13 +29,6 @@ const MusicianPage: React.FC = () => (
   <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
     <h1>Карточка музыканта</h1>
     <p>Творческая биография солиста Национального филармонического оркестра России.</p>
-  </div>
-);
-
-const ArchiveDetails: React.FC = () => (
-  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
-    <h1>Детали архива</h1>
-    <p>Универсальная страница детального просмотра программ, новостей и отзывов.</p>
   </div>
 );
 

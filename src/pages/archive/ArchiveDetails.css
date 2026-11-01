@@ -1,0 +1,282 @@
+/* ==========================================================================
+   Главные контейнеры страницы медиа
+   ========================================================================== */
+.archive-details-main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.archive-details-container {
+  width: 95%;
+  max-width: 1150px;
+  margin: 50px auto 80px auto;
+}
+
+/* Двухколоночный журнальный макет статьи */
+.article-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 50px;
+  width: 100%;
+}
+
+/* Левая колонка: Постер/Афиша */
+.article-sidebar {
+  flex: 0 0 32%;
+  max-width: 32%;
+  display: flex;
+  justify-content: center;
+}
+
+.article-poster-img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Правая колонка: Содержимое */
+.article-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.article-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.article-tag-duration {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  background-color: rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.article-tag-date {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.article-tag-location {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 0.95rem;
+}
+
+.article-title {
+  font-family: var(--font-medium);
+  color: #ffffff;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.article-subtitle {
+  font-family: var(--font-medium);
+  color: var(--color-brass);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 0 0 24px 0;
+}
+
+/* Лид-абзац (краткое описание, взятое из карточки) */
+.article-lead-desc {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  margin: 0 0 32px 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-brass); /* Благородный латунный акцент */
+}
+
+/* Внутренние адаптивные блоки */
+.article-special-section {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.section-inner-title {
+  font-family: var(--font-medium);
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+/* Номерной репертуарный лист */
+.music-repertoire-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.music-repertoire-list li {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 24px;
+}
+
+/* Золотистый скрипичный/нотный маркер */
+.music-repertoire-list li::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: var(--color-brass);
+  font-size: 1.2rem;
+  top: -2px;
+}
+
+/* Текст новости */
+.story-paragraph {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+
+/* Блок отзывов прессы и ректора */
+.reviews-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-blockquote {
+  margin: 0;
+  padding: 0 0 0 20px;
+  border-left: 3px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-text {
+  font-family: var(--font-regular);
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-style: italic; 
+  margin: 0;
+}
+
+.review-author {
+  font-family: var(--font-medium);
+  color: var(--color-brass);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Кнопка возврата назад */
+.article-back-button {
+  display: inline-block;
+  font-family: var(--font-medium);
+  color: var(--color-text-silver);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.article-back-button:hover {
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-brass);
+  color: var(--color-brass);
+}
+
+.archive-error-container {
+  text-align: center;
+  padding: 120px 20px;
+  color: var(--color-text-silver);
+}
+
+.error-return-link {
+  color: var(--color-brass);
+  text-decoration: none;
+  font-family: var(--font-medium);
+}
+
+/* ==========================================================================
+   📱 Мобильная адаптивность (до 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .article-layout {
+    flex-direction: column; 
+    align-items: center;
+    gap: 30px;
+  }
+
+  .article-sidebar {
+    max-width: 240px; 
+  }
+
+  .article-content {
+    width: 100%;
+    align-items: center;
+    text-align: center; 
+  }
+
+  .article-meta-line {
+    justify-content: center;
+  }
+
+  .article-title {
+    font-size: 1.75rem;
+  }
+
+  .article-lead-desc {
+    text-align: center;
+    padding-left: 0;
+    border-left: none;
+    font-size: 1.05rem;
+  }
+
+  .music-repertoire-list li {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .music-repertoire-list li::before {
+    display: none; 
+  }
+
+  .review-blockquote {
+    padding-left: 0;
+    border-left: none;
+    align-items: center;
+  }
+
+  .review-text {
+    text-align: center;
+  }
+}
