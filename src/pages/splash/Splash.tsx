@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import MainLogo from "../../components/mainLogo/MainLogo"; // Используем пуленепробиваемый логотип
+import LogoLoader from "../../components/loader/LogoLoader"; // Импортируем анимированный плеер букв
 import "./Splash.css";
 
 const AnimatedSplash: React.FC = () => {
@@ -8,7 +8,7 @@ const AnimatedSplash: React.FC = () => {
     <div className="logo_wrapper">
       <div className="screen">
         <div id="logo">
-          <MainLogo size="240px" />
+          <LogoLoader /> {/* Запустили прорисовку духового автографа Лиги Брасс */}
         </div>
       </div>
     </div>
@@ -20,16 +20,13 @@ const Splash: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Установка таймера на перенаправление
     const timerId = setTimeout(() => {
       setRedirect(true);
     }, 5500);
 
-    // Чистим таймер при размонтировании для защиты от утечек памяти
     return () => clearTimeout(timerId);
   }, []);
 
-  // Выполняем SPA-навигацию при срабатывании стейта
   useEffect(() => {
     if (redirect) {
       navigate("/home", { replace: true });
