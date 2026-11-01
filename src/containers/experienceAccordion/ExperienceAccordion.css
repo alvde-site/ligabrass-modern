@@ -73,17 +73,25 @@
 }
 
 /* ==========================================================================
-   Контентная область (Плавный CSS-аккордеон)
+   Контентная область (Плавный CSS-аккордеон с контролем отступов)
    ========================================================================== */
 .accord-panel-content {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  
+  /* ИСПРАВЛЕНИЕ: По умолчанию обнуляем паддинги, чтобы блок скрывался полностью */
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
+/* Когда аккордеон открывается — плавно возвращаем паддинги */
 .accord-panel-content.open {
   grid-template-rows: 1fr;
+  padding-top: 24px;
+  padding-bottom: 12px;
 }
 
 .accord-panel-inner {
@@ -91,7 +99,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 24px 0 12px 0; /* Отступы для внутренней ленты карточек */
+  /* ИСПРАВЛЕНИЕ: Очистили жесткие паддинги отсюда, теперь они не мешают блоку закрываться */
+  padding: 0; 
 }
 
 /* Адаптивность под мобильные экраны */
