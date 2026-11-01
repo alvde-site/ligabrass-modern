@@ -1,0 +1,243 @@
+/* ==========================================================================
+   Главные контейнеры страницы медиа
+   ========================================================================== */
+.opensource-main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.media-container {
+  width: 95%;
+  margin: 0 auto;
+  padding: 40px 0 60px 0;
+}
+
+.media-header-div {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.media-heading-text {
+  font-family: var(--font-medium);
+  color: var(--color-brass);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 12px 0;
+  letter-spacing: -1px;
+}
+
+.media-heading-subText {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* Секции (Видео / Фотоальбомы) */
+.media-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.media-section-title {
+  font-family: var(--font-medium);
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+/* ==========================================================================
+   Сетка видеоплееров Rutube / VK (Пропорции 16:9)
+   ========================================================================== */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-hover-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(228, 168, 52, 0.5);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.3);
+}
+
+.video-responsive-wrap {
+  position: relative;
+  padding-bottom: 56.25%; /* Отношение сторон 16:9 */
+  height: 0;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.video-responsive-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-card-title {
+  font-family: var(--font-regular);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 16px 20px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Тематические фотоальбомы (Сквозная высота)
+   ========================================================================== */
+.album-card-link {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  display: flex;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  width: 100%;
+  grid-auto-rows: 1fr;
+}
+
+.album-spec-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-hover-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  width: 100%;
+  height: 100%;
+}
+
+.album-spec-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(228, 168, 52, 0.5);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.3);
+}
+
+.album-cover-wrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: #000000;
+}
+
+.album-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.album-spec-card:hover .album-cover-img {
+  transform: scale(1.02);
+}
+
+.album-overlay-badge {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  font-family: var(--font-medium);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: var(--color-text-silver);
+  background-color: var(--color-anthracite);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Изменение стилей ярлыка при наведении без деструктивных !important */
+.album-card-link:hover .album-overlay-badge {
+  background-color: var(--color-brass);
+  color: var(--color-anthracite);
+  border-color: var(--color-brass);
+}
+
+.album-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.album-card-title {
+  font-family: var(--font-medium);
+  color: #ffffff;
+  font-size: 1.35rem;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.album-card-desc {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   📱 Мобильная адаптивность (до 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .media-heading-text {
+    font-size: 32px;
+  }
+
+  .media-heading-subText {
+    font-size: 1.1rem;
+  }
+
+  .media-section-title {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .video-grid,
+  .album-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .album-grid {
+    grid-auto-rows: auto;
+  }
+
+  .album-cover-wrap {
+    height: 180px;
+  }
+}

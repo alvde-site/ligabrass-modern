@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { projectsHeader } from "../../data/portfolio"; // Корректный импорт ваших данных репертуара
+import { projectsHeader } from "../../data/projects"; // Корректный импорт ваших данных репертуара
 import "./Projects.css";
 
 const Projects: React.FC = () => {

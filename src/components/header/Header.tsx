@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { settings } from "../../data/settings";
 import MainLogo from "../mainLogo/MainLogo";
 import "./Header.css";
 
 const Header: React.FC = () => {
   const homeLink = settings.isSplash ? "/splash" : "/home";
-  
+
   // Ссылка на DOM-элемент скрытого чекбокса мобильного меню
   const checkboxRef = useRef<HTMLInputElement>(null);
 
@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   };
 
   const navLinkStyle = ({ isActive }: { isActive: boolean }) => ({
-    color: isActive ? "var(--color-brass)" : "var(--color-text-silver)"
+    color: isActive ? "var(--color-brass)" : "var(--color-text-silver)",
   });
 
   return (
@@ -30,18 +30,18 @@ const Header: React.FC = () => {
             style={{ transition: "color 0.3s ease-in-out" }}
           />
         </NavLink>
-        
+
         {/* Привязали Ref к инпуту */}
-        <input 
-          className="menu-btn" 
-          type="checkbox" 
-          id="menu-btn" 
-          ref={checkboxRef} 
+        <input
+          className="menu-btn"
+          type="checkbox"
+          id="menu-btn"
+          ref={checkboxRef}
         />
         <label className="menu-icon" htmlFor="menu-btn">
           <span className="navicon"></span>
         </label>
-        
+
         <ul className="menu">
           <li>
             <NavLink to="/home" style={navLinkStyle} onClick={closeMenu}>
