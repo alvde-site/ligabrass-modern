@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Главный контейнер страницы 404
+   ========================================================================== */
+.error-main {
+  width: 100%;
+  overflow: hidden;
+}
+
+.error-class {
+  width: 95%;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 360px); /* Удерживает подвал внизу экрана */
+  gap: 16px;
+}
+
+/* ==========================================================================
+   Строгие текстовые элементы
+   ========================================================================== */
+.error-title {
+  font-family: var(--font-medium);
+  color: var(--color-brass);
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.error-description {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+  max-width: 600px;
+}
+
+/* ==========================================================================
+   Изящная ссылка возврата
+   ========================================================================== */
+.error-return-link {
+  display: inline-block;
+  font-family: var(--font-medium);
+  color: var(--color-text-silver);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.error-return-link:hover {
+  color: var(--color-brass);
+}
+
+/* ==========================================================================
+   📱 Мобильная адаптивность (до 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  .error-class {
+    min-height: calc(100vh - 320px);
+    padding: 0 20px;
+  }
+
+  .error-title {
+    font-size: 1.5rem;
+  }
+
+  .error-description {
+    font-size: 1.05rem;
+  }
+}
