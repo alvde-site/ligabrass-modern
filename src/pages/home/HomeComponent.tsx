@@ -1,14 +1,13 @@
 import React from "react";
 import Greeting from "../../containers/greeting/Greeting";
 import Certifications from "../../containers/certifications/Certifications";
-import TopButton from "../../components/topButton/TopButton";
 import { certifications } from "../../data/certifications";
 import "./HomeComponent.css";
 
 const HomeComponent: React.FC = () => {
   const now = new Date();
 
-  // Пуленепробиваемый расчет актуальности концертов
+  // Расчет актуальности концертов
   const hasActiveConcerts = certifications.some((cert) => {
     const [day, month] = cert.concert_date.split(".").map(Number);
     const [hours, minutes] = cert.concert_time
@@ -28,8 +27,6 @@ const HomeComponent: React.FC = () => {
       {certifications.length > 0 && hasActiveConcerts ? (
         <Certifications />
       ) : null}
-
-      <TopButton />
     </div>
   );
 };

@@ -1,47 +1,51 @@
-.top-button-el {
+.top-scroll-btn {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  cursor: pointer;
-  padding: 12px 15px;
-  outline: none;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  font-size: 1.3rem;
-  z-index: 90;
-  
-  /* Цвета по брендбуку: латунный контур, прозрачный фон, латунная стрелка */
-  color: var(--color-brass);
-  background-color: rgba(18, 18, 18, 0.8);
-  border: 1px solid rgba(228, 168, 52, 0.4);
-  backdrop-filter: blur(4px); /* Мягкое размытие заднего плана при прокрутке */
-
-  /* Скрытие по умолчанию через непрозрачность для плавного CSS-эффекта */
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  background-color: var(--color-hover-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--color-text-silver);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
 }
 
-/* Состояние, когда кнопка становится активной при скролле */
-.top-button-el.visible {
-  opacity: 1;
-  pointer-events: auto;
+.top-scroll-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-brass);
+  color: var(--color-brass);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.top-scroll-btn:active {
   transform: translateY(0);
 }
 
-/* Премиальный инвертированный ховер без задействования JS-стейта */
-.top-button-el:hover {
-  background-color: var(--color-brass);
-  border-color: var(--color-brass);
-  color: var(--color-anthracite);
+/* Плавная анимация проявления */
+.fade-in {
+  animation: buttonFadeIn 0.3s ease forwards;
 }
 
-/* Адаптивность для мобильных устройств: делаем кнопку чуть компактнее */
+@keyframes buttonFadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Смещаем кнопку на мобильных экранах, чтобы она не перекрывала контент */
 @media (max-width: 768px) {
-  .top-button-el {
-    bottom: 1.2rem;
-    right: 1.2rem;
-    padding: 10px 13px;
-    font-size: 1.1rem;
+  .top-scroll-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }

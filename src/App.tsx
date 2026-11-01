@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer";
 import AppRouter from "./containers/AppRouter";
 import "./App.css";
 import CookieConsent from "./components/cookieConsent/CookieConsent";
+import TopButton from "./components/topButton/TopButton";
 
 const App: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         </main>
         <Footer />
         <CookieConsent />
+        <TopButton /> 
       </div>
     </BrowserRouter>
   );

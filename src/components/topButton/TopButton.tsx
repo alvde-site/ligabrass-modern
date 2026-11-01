@@ -6,29 +6,31 @@ import "./TopButton.css";
 const TopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const goUpEvent = (): void => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   useEffect(() => {
-    const scrollFunction = (): void => {
-      if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+    const toggleVisibility = () => {
+      // Кнопка плавно проявляется, если пользователь проскроллил вниз больше 300px
+      if (window.scrollY > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
-    window.addEventListener("scroll", scrollFunction);
-    return () => window.removeEventListener("scroll", scrollFunction);
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" // Фирменная плавная филармоническая прокрутка
+    });
+  };
+
+  if (!isVisible) return null;
+
   return (
-    <button
-      onClick={goUpEvent}
-      className={`top-button-el ${isVisible ? "visible" : ""}`}
-      title="Наверх"
-      aria-label="Наверх"
-    >
+    <button className="top-scroll-btn fade-in" onClick={scrollToTop} aria-label="Наверх">
       <FontAwesomeIcon icon={faArrowUp} />
     </button>
   );
