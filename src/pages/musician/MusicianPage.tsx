@@ -9,10 +9,14 @@ const MusicianPage: React.FC = () => {
   // Ищем нужного музыканта по ключу (bakharev, grinemayer и т.д.)
   const artist = id ? musiciansDetails[id] : undefined;
 
-  // Метод динамического получения путей к картинкам в Vite
-  const getArtistImgUrl = (photoPath: string) => {
-    return new URL(`../../assets/images/${photoPath}`, import.meta.url).href;
-  };
+const getArtistImgUrl = (photoPath: string) => {
+  // Намертво отрезаем "musicians/", если строка в данных уже содержит эту папку
+  const cleanPath = photoPath.replace("musicians/", "");
+  
+  // Собираем точный, чистый абсолютный путь от корня src для сборщика Vite
+  return new URL(`/src/assets/images/musicians/${cleanPath}`, window.location.origin).href;
+};
+
 
   // Экран обработки ошибок, если музыкант не найден
   if (!artist) {
@@ -28,17 +32,22 @@ const MusicianPage: React.FC = () => {
     );
   }
 
+  // Защитный поиск имени свойства: проверяем все возможные варианты названия поля картинки
+  const targetPhoto = artist.photo || (artist as any).logo_path || (artist as any).avatar_image_path;
+
   return (
     <div className="musician-page-main page__main fade-in-up">
       <div className="musician-container">
         
         {/* Левая колонка: Фото и Кнопки связи */}
         <div className="musician-left">
-          <img
-            src={getArtistImgUrl(artist.photo)}
-            alt={artist.name}
-            className="musician-photo"
-          />
+          {targetPhoto && (
+            <img
+              src={getArtistImgUrl(targetPhoto)}
+              alt={artist.name}
+              className="musician-photo"
+            />
+          )}
           <div className="musician-socials">
             {artist.vk && (
               <a

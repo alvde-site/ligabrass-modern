@@ -8,18 +8,23 @@ interface DegreeCardProps {
 }
 
 const DegreeCard: React.FC<DegreeCardProps> = ({ degree }) => {
-  // Пуленепробиваемый метод динамического получения путей к картинкам в Vite
-  const getMusicianImgUrl = (imagePath: string) => {
-    return new URL(`../../assets/images/${imagePath}`, import.meta.url).href;
+  // 1. Вытаскиваем точное имя файла картинки, защищаясь от разности имён в старых базах данных
+  const photoFileName = degree.logo_path || (degree as any).avatar_image_path || (degree as any).photo;
+
+  // 2. Пуленепробиваемый метод динамического получения путей к подпапке музыкантов в Vite
+  const getMusicianImgUrl = (photoPath: string) => {
+    // Очищаем путь от случайных дублирований подстроки "musicians/", если они уже есть в базе данных
+    const cleanPath = photoPath.replace("musicians/", "");
+    return new URL(`../../assets/images/musicians/${cleanPath}`, import.meta.url).href;
   };
 
   return (
     <div className="degree-card">
       {/* Круглый блок фотографии музыканта */}
-      {degree.logo_path && (
+      {photoFileName && (
         <div className="card-img-block">
           <img
-            src={getMusicianImgUrl(degree.logo_path)}
+            src={getMusicianImgUrl(photoFileName)}
             alt={degree.alt_name || degree.title}
           />
         </div>
@@ -28,7 +33,7 @@ const DegreeCard: React.FC<DegreeCardProps> = ({ degree }) => {
       {/* Контейнер тела карточки */}
       <div 
         className="card-body-block"
-        style={{ width: degree.logo_path ? "90%" : "100%" }}
+        style={{ width: photoFileName ? "90%" : "100%" }}
       >
         <div className="body-header-block">
           <div className="body-header-title-block">
@@ -47,7 +52,6 @@ const DegreeCard: React.FC<DegreeCardProps> = ({ degree }) => {
             </p>
           ))}
 
-          {/* Безопасный контейнер кнопки с SPA-переходом */}
           {degree.website_link && (
             <div className="visit-btn-container-block">
               <Link to={degree.website_link} className="visit-link-wrapper-block">
