@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: normal;
   src: local("Agustina Regular"),
-    url("fonts/Agustina.woff") format("woff");
+    url("/fonts/Agustina.woff") format("woff"); /* Поставили ведущий слэш / */
 }
 
 @font-face {
@@ -14,7 +14,7 @@
   font-style: normal;
   font-weight: 400;
   src: local("Google Sans Regular"),
-    url("fonts/GoogleSans-Regular.ttf") format("truetype");
+    url("/fonts/GoogleSans-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -22,7 +22,7 @@
   font-style: normal;
   font-weight: 500;
   src: local("Google Sans Medium"),
-    url("fonts/GoogleSans-Medium.ttf") format("truetype");
+    url("/fonts/GoogleSans-Medium.ttf") format("truetype");
 }
 
 @font-face {
@@ -30,7 +30,7 @@
   font-style: italic;
   font-weight: 400;
   src: local("Google Sans Italic"),
-    url("fonts/GoogleSans-Italic.ttf") format("truetype");
+    url("/fonts/GoogleSans-Italic.ttf") format("truetype");
 }
 
 @font-face {
@@ -38,7 +38,7 @@
   font-style: italic;
   font-weight: 500;
   src: local("Google Sans Medium Italic"),
-    url("fonts/GoogleSans-MediumItalic.ttf") format("truetype");
+    url("/fonts/GoogleSans-MediumItalic.ttf") format("truetype");
 }
 
 /* ==========================================================================
