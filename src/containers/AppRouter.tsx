@@ -11,6 +11,7 @@ import Contact from "../pages/contact/ContactComponent";
 import ArchiveDetails from "../pages/archive/ArchiveDetails";
 import Education from "../pages/education/EducationComponent";
 import GalleryAlbum from "../pages/opensource/GalleryAlbum";
+import MusicianPage from "../pages/musician/MusicianPage";
 
 
 
@@ -19,13 +20,6 @@ const Splash: React.FC = () => (
   <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-brass)' }}>
     <h2>ЛИГА БРАСС</h2>
     <p>Загрузка SPA-приложения...</p>
-  </div>
-);
-
-const MusicianPage: React.FC = () => (
-  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
-    <h1>Карточка музыканта</h1>
-    <p>Творческая биография солиста Национального филармонического оркестра России.</p>
   </div>
 );
 

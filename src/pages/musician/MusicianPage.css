@@ -1,0 +1,137 @@
+.musician-container {
+  display: flex;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+  gap: 50px;
+}
+
+.musician-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.musician-photo {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.musician-socials {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.social-btn {
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-medium);
+  font-weight: 500;
+  transition: all 0.25s ease-in-out;
+  border: 1px solid var(--color-brass);
+  color: var(--color-brass);
+  background-color: transparent;
+}
+
+.social-btn:hover {
+  background-color: var(--color-brass);
+  color: var(--color-anthracite);
+}
+
+.musician-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.musician-label {
+  font-family: var(--font-medium);
+  color: var(--color-brass);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.musician-name {
+  font-family: var(--font-medium);
+  color: #ffffff;
+  font-size: 2.8rem;
+  margin: 0 0 25px 0;
+  font-weight: 500;
+}
+
+.musician-bio p {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.back-to-team {
+  margin-top: 30px;
+  align-self: flex-start;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-medium);
+  font-size: 0.95rem;
+  color: var(--color-text-silver);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.back-to-team:hover {
+  background-color: var(--color-hover-bg);
+  border-color: var(--color-brass);
+  color: var(--color-brass);
+}
+
+.musician-error-container {
+  text-align: center;
+  padding: 120px 20px;
+  color: var(--color-text-silver);
+}
+
+.error-return-link {
+  color: var(--color-brass);
+  text-decoration: none;
+  font-family: var(--font-medium);
+}
+
+/* ==========================================================================
+   📱 Адаптивность для мобильных телефонов (до 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .musician-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+  
+  .musician-right {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .musician-name {
+    font-size: 2.2rem;
+  }
+  
+  .back-to-team {
+    align-self: center;
+  }
+}
