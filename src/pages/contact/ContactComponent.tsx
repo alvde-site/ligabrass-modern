@@ -6,8 +6,13 @@ import "./ContactComponent.css";
 const Contact: React.FC = () => {
   const ContactData = contactPageData.contactSection;
 
+  // Точный и пуленепробиваемый метод динамического импорта изображений музыкантов в Vite
   const getProfileImageUrl = (imagePath: string) => {
-    return new URL(`../../assets/images/${imagePath}`, import.meta.url).href;
+    // Намертво отрезаем "musicians/", если строка в данных уже содержит эту папку
+    const cleanPath = imagePath.replace("musicians/", "");
+    
+    // Формируем чистый абсолютный путь от корня src для сборщика Vite
+    return new URL(`/src/assets/images/musicians/${cleanPath}`, window.location.origin).href;
   };
 
   return (

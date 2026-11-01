@@ -3,7 +3,7 @@ import type { MediaPageData } from '../types/portfolio';
 export const mediaPageData: MediaPageData = {
   videoList: [
     {
-      url: "https://vkvideo.ru",
+      url: "https://vkvideo.ru/video_ext.php?oid=-2021308&id=456241255&hash=b5a8b6b7a97d2d13&hd=4",
       title: "Творческая мечта «Лига Брасс» — сыграть эту пьесу вместе с нашим другом",
     },
   ],
