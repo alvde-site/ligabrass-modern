@@ -97,8 +97,8 @@ const ArchiveDetails: React.FC = () => {
 
     // 3. Формируем чистый абсолютный путь от корня src для сборщика Vite
     return new URL(
-      `/src/assets/images/${subFolder}/${cleanPath}`,
-      window.location.origin,
+      `../../assets/images/${subFolder}/${cleanPath}`,
+      import.meta.url,
     ).href;
   };
 

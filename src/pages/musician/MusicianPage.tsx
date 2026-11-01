@@ -13,8 +13,7 @@ const getArtistImgUrl = (photoPath: string) => {
   // Намертво отрезаем "musicians/", если строка в данных уже содержит эту папку
   const cleanPath = photoPath.replace("musicians/", "");
   
-  // Собираем точный, чистый абсолютный путь от корня src для сборщика Vite
-  return new URL(`/src/assets/images/musicians/${cleanPath}`, window.location.origin).href;
+  return new URL(`../../assets/images/musicians/${cleanPath}`, import.meta.url).href;
 };
 
 

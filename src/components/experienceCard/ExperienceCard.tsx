@@ -16,7 +16,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
     const cleanPath = logoPath.replace("concerts/", "");
     
     // Формируем чистый абсолютный путь от корня src для сборщика Vite
-    return new URL(`/src/assets/images/concerts/${cleanPath}`, window.location.origin).href;
+    return new URL(`../../assets/images/concerts/${cleanPath}`, import.meta.url).href;
   };
 
   return (
