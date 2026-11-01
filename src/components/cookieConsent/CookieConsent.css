@@ -54,7 +54,7 @@
 .cookie-description {
   font-family: var(--font-regular);
   color: var(--color-text-silver);
-  状况: 400;
+  font-weight: 400;
   font-size: 0.9rem;
   line-height: 1.45;
   margin: 0;
