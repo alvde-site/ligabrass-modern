@@ -1,10 +1,9 @@
 /* ==========================================================================
    Главный контейнер шапки (Header)
    ========================================================================== */
-.header-container {
+.header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   max-width: 100%;
   width: 95%;
   padding: 20px 0;
@@ -12,64 +11,77 @@
   position: relative;
 }
 
-.menu-list {
+.header ul {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  max-height: 0;
   overflow: hidden;
-  width: 100%;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: var(--color-anthracite);
-  z-index: 100;
-  transition: max-height 0.25s ease-out;
 }
 
 /* ==========================================================================
    Логотип коллектива (Блок слева)
    ========================================================================== */
-.logo-link {
+.header .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
   line-height: normal;
+  align-self: flex-start; /* Замена float: left для выравнивания в flex-контейнере */
+}
+
+.header .logo-name {
+  font-family: "Agustina Regular", sans-serif;
+  font-weight: 500;
+  padding: 0 10px;
+  transition: color 0.3s ease;
+}
+
+/* Мягкая подсветка латунью при наведении без !important */
+.header .logo:hover .logo-name {
+  color: var(--color-brass);
 }
 
 /* ==========================================================================
    Ссылки навигационного меню
    ========================================================================== */
-.menu-list li a {
-  display: block;
-  padding: 15px 20px;
-  text-decoration: none;
-  font-size: 1.05rem;
+.menu {
   font-family: var(--font-medium);
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
 }
 
-.menu-list li a:hover {
-  color: var(--color-brass);
-  background-color: var(--color-hover-bg);
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.grey-color {
+  color: #94a3b8;
 }
 
 /* ==========================================================================
    📱 ИКОНКА МОБИЛЬНОГО МЕНЮ (БУРГЕР)
    ========================================================================== */
-.menu-icon {
+.header .menu-icon {
   cursor: pointer;
   display: inline-block;
-  padding: 20px;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  padding: 28px 20px;
   user-select: none;
   z-index: 110;
 }
 
-.menu-icon .navicon {
+.header .menu-icon .navicon {
   background: #e2e8f0;
   display: block;
   height: 2px;
@@ -78,8 +90,8 @@
   width: 18px;
 }
 
-.menu-icon .navicon:before,
-.menu-icon .navicon:after {
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
   background: #e2e8f0;
   content: "";
   display: block;
@@ -89,95 +101,95 @@
   width: 100%;
 }
 
-.menu-icon .navicon:before {
-  top: 5px;
-}
+.header .menu-icon .navicon:before { top: 5px; }
+.header .menu-icon .navicon:after { top: -5px; }
 
-.menu-icon .navicon:after {
-  top: -5px;
-}
-
-.menu-icon:hover .navicon,
-.menu-icon:hover .navicon:before,
-.menu-icon:hover .navicon:after {
+.header .menu-icon:hover .navicon,
+.header .menu-icon:hover .navicon:before,
+.header .menu-icon:hover .navicon:after {
   background: var(--color-brass);
 }
 
-.menu-btn {
+.header .menu-btn {
   display: none;
 }
 
-.menu-btn:checked ~ .menu-list {
+.header .menu-btn:checked ~ .menu {
   max-height: 370px;
 }
 
-/* АНИМАЦИЯ КРЕСТИКА */
-.menu-btn:checked ~ .menu-icon .navicon {
+/* АНИМАЦИЯ КРЕСТИКА И ХОВЕРЫ В СОСТОЯНИИ CHECKED */
+.header .menu-btn:checked ~ .menu-icon .navicon {
   background: transparent;
 }
 
-.menu-btn:checked ~ .menu-icon .navicon:before {
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
   transform: rotate(-45deg);
   top: 0;
 }
 
-.menu-btn:checked ~ .menu-icon .navicon:after {
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
   transform: rotate(45deg);
   top: 0;
 }
 
-.menu-btn:checked ~ .menu-icon:hover .navicon:before {
+.header .menu-btn:checked ~ .menu-icon:hover .navicon {
+  background: transparent;
+}
+.header .menu-btn:checked ~ .menu-icon:hover .navicon:before {
+  transform: rotate(-45deg);
   background: var(--color-brass);
 }
-
-.menu-btn:checked ~ .menu-icon:hover .navicon:after {
+.header .menu-btn:checked ~ .menu-icon:hover .navicon:after {
+  transform: rotate(45deg);
   background: var(--color-brass);
 }
 
 /* ==========================================================================
-   🖥️ ДЕСКТОПНАЯ СЕТКА (Широкие экраны от 1104px)
+   🖥️ ДЕСКТОПНАЯ СЕТКА (Широкие экраны от 1104px / 69em)
    ========================================================================== */
 @media (min-width: 69em) {
-  .header-container {
+  .header {
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .menu-list {
-    position: static;
-    display: flex;
+  .header .menu {
     flex-direction: row;
     max-height: none;
     width: auto;
-    background-color: transparent;
-    overflow: visible;
   }
 
-  .menu-list li a {
-    padding: 10px 20px;
-  }
-
-  .menu-list li a:hover {
-    background-color: transparent;
-  }
-
-  .menu-list li a::before {
+  .header li a::before {
     content: "";
     position: absolute;
     width: 0;
-    height: 1px;
-    bottom: -2px;
+    height: 2px;
+    bottom: 12px;
     left: 20px;
     background-color: var(--color-brass);
     visibility: hidden;
     transition: all 0.25s ease-in-out;
   }
 
-  .menu-list li a:hover::before {
+  .header li a:hover {
+    color: var(--color-brass);
+  }
+
+  .header li a:hover::before {
     visibility: visible;
     width: calc(100% - 40px);
   }
 
-  .menu-icon {
+  .header .menu-icon {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    width: 95%;
+    padding: 20px 0;
   }
 }
