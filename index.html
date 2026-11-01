@@ -1,95 +1,54 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <!-- Базовый URL для абсолютного роутинга глубоких страниц музыкантов -->
-    <base href="/" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Основные метатеги поисковой оптимизации (SEO) -->
-    <meta
-      name="title"
-      content="Лига Брасс — Ансамбль медных духовых инструментов"
-    />
-    <meta
-      name="description"
-      content="Официальный сайт творческого коллектива Лига Брасс. Ансамбль солистов, представляющий классический состав медных духовых инструментов и академический музыкальный репертуар."
-    />
-    <meta
-      name="keywords"
-      content="лига брасс, брасс квинтет, медные духовые инструменты, ансамбль солистов, духовой квинтет, академическая музыка, концертные программы, труба, тромбон, валторна, туба, живая музыка на концерт"
-    />
+    <meta name="title" content="Лига Брасс — Ансамбль медных духовых инструментов" />
+    <meta name="description" content="Официальный сайт творческого коллектива Лига Брасс. Ансамбль солистов, представляющий классический состав медных духовых инструментов и академический музыкальный репертуар." />
+    <meta name="keywords" content="лига brass, брасс квинтет, медные духовые, ансамбль солистов, духовой квинтет, академическая музыка, труба, тромбон, валторна, туба" />
     <meta name="author" content="Лига Брасс" />
-    <meta name="application-name" content="Лига Брасс" />
 
-    <!-- Глобальная разметка Open Graph (OG) для превью ссылок в Telegram и VK -->
-    <meta
-      property="og:title"
-      content="Лига Брасс — Ансамбль медных духовых инструментов"
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:description"
-      content="Официальный сайт творческого коллектива. Хроника событий, архив концертов, репертуарные программы и медиагалерея."
-    />
+    <!-- Глобальная разметка Open Graph (OG) -->
+    <meta name="og:title" content="Лига Брасс — Ансамбль медных духовых инструментов" />
+    <meta name="og:type" content="website" />
+    <meta name="og:description" content="Официальный сайт творческого коллектива. Хроника событий, архив концертов, репертуарные программы и медиагалерея." />
     <meta property="og:image" content="/icons/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:site_name" content="Лига Брасс" />
+    <meta property="og:site_name" content="Liga Brass" />
 
-    <!-- Современный пакет иконок для всех устройств (из папки public/icons/) -->
-    <link
-      rel="icon"
-      type="image/png"
-      href="/icons/favicon-96x96.png"
-      sizes="96x96"
-    />
+    <!-- Пакет иконок -->
+    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <link rel="shortcut icon" href="/icons/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/icons/apple-touch-icon.png"
-    />
-    <meta name="apple-mobile-web-app-title" content="Лига Брасс" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
 
     <!-- Веб-манифест PWA-приложения -->
     <link rel="manifest" href="/icons/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="#121212" />
-
-    <!-- Тонирование строки мобильного браузера в цвет нашей матовой антрацитовой темы -->
     <meta name="theme-color" content="#121212" />
-
-    <link rel="stylesheet" href="/css/all.min.css" />
 
     <title>Лига Брасс</title>
 
-    <!-- Скрипт-перехватчик хака роутинга для GitHub Pages (В Vite должен стоять ПЕРЕД основным скриптом) -->
+    <!-- ИСПРАВЛЕННЫЙ СКРИПТ-ПЕРЕХВАТЧИК РОУТИНГА ДЛЯ GITHUB PAGES -->
     <script type="text/javascript">
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash,
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&') 
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
           );
         }
-      })(window.location);
+      }(window.location));
     </script>
     <script type="module" crossorigin src="/assets/index-CVfrPC8K.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-B10ySRmd.css">
   </head>
   <body>
-    <noscript
-      >Для работы этого приложения необходимо включить JavaScript.</noscript
-    >
-    <div id="root"></div>
+    <noscript>Для работы этого приложения необходимо включить JavaScript.</noscript>
+    <div id="root"></div>
+    
+    <!-- Точка входа Vite -->
   </body>
 </html>
