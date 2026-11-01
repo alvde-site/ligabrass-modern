@@ -2,27 +2,63 @@ import React, { useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { settings } from "../data/settings";
 
-// Временные заглушки для страниц (на Шаге 5 мы заменим их на реальные файлы)
+// НАСТОЯЩИЕ ИСПРАВЛЕННЫЕ СТРАНИЦЫ (ИМПОРТИРУЕМ ГОТОВЫЙ СТЕК ШАГА 5):
 import Home from "../pages/home/HomeComponent";
-const Splash = () => <div style={{ padding: '20px' }}>Страница: Splash</div>;
-const Experience = () => <div style={{ padding: '20px' }}>Страница: Хроника и новости</div>;
-const Education = () => <div style={{ padding: '20px' }}>Страница: О квинтете</div>;
-const Opensource = () => <div style={{ padding: '20px' }}>Страница: Медиа</div>;
-const Contact = () => <div style={{ padding: '20px' }}>Страница: Контакты</div>;
-const Projects = () => <div style={{ padding: '20px' }}>Страница: Программы</div>;
-const MusicianPage = () => <div style={{ padding: '20px' }}>Страница: Карточка музыканта</div>;
-const ArchiveDetails = () => <div style={{ padding: '20px' }}>Страница: Детали архива</div>;
-const GalleryAlbum = () => <div style={{ padding: '20px' }}>Страница: Фотоальбом</div>;
-const Error404 = () => <div style={{ padding: '20px', color: 'var(--color-brass)' }}>Ошибка 404: Страница не найдена</div>;
+import Projects from "../pages/projects/Projects";
+import Experience from "../pages/experience/Experience";
+import Opensource from "../pages/opensource/Opensource";
+import Contact from "../pages/contact/ContactComponent";
+
+// ВРЕМЕННЫЕ ЛЕГКОВЕСНЫЕ ЗАГЛУШКИ ДЛЯ ОСТАВШИХСЯ СТРАНИЦ (ПЕРЕВЕДЕНЫ НА ЧИСТЫЙ TSX):
+const Splash: React.FC = () => (
+  <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-brass)' }}>
+    <h2>ЛИГА БРАСС</h2>
+    <p>Загрузка SPA-приложения...</p>
+  </div>
+);
+
+const Education: React.FC = () => (
+  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
+    <h1>О квинтете</h1>
+    <p>Раздел находится в процессе наполнения академическим контентом.</p>
+  </div>
+);
+
+const MusicianPage: React.FC = () => (
+  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
+    <h1>Карточка музыканта</h1>
+    <p>Творческая биография солиста Национального филармонического оркестра России.</p>
+  </div>
+);
+
+const ArchiveDetails: React.FC = () => (
+  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
+    <h1>Детали архива</h1>
+    <p>Универсальная страница детального просмотра программ, новостей и отзывов.</p>
+  </div>
+);
+
+const GalleryAlbum: React.FC = () => (
+  <div style={{ padding: '40px', color: 'var(--color-text-silver)' }}>
+    <h1>Фотоальбом</h1>
+    <p>Просмотр бэкстейджа и хроники будней коллектива.</p>
+  </div>
+);
+
+const Error404: React.FC = () => (
+  <div style={{ padding: '40px', textAlign: 'center', color: 'var(--color-brass)' }}>
+    <h1>Ошибка 404</h1>
+    <p>Страница не найдена. Вернитесь в главное меню навигации.</p>
+  </div>
+);
 
 const AppRouter: React.FC = () => {
   const location = useLocation();
 
   // Автоматический трекинг переходов для Яндекс Метрики и Вебвизора
   useEffect(() => {
-    // Проверяем, инициализирован ли глобальный счетчик Метрики на сайте
     if (typeof window !== "undefined" && (window as any).ym) {
-      const counterId = 99999999; // TODO: Сюда встанет реальный ID вашего счетчика из index.html
+      const counterId = 99999999; // TODO: Замените на реальный ID счетчика коллектива
       (window as any).ym(counterId, "hit", location.pathname + location.search);
     }
   }, [location]);
@@ -41,20 +77,21 @@ const AppRouter: React.FC = () => {
         }
       />
 
+      {/* Подключение боевых страниц */}
       <Route path="/home" element={<Home />} />
+      <Route path="/projects" element={<Projects />} />
       <Route path="/experience" element={<Experience />} />
-      <Route path="/about" element={<Education />} />
       <Route path="/opensource" element={<Opensource />} />
       <Route path="/contact" element={<Contact />} />
       
+      {/* Подключение временных интерактивных заглушек */}
       {settings.isSplash && <Route path="/splash" element={<Splash />} />}
-      
-      <Route path="/projects" element={<Projects />} />
+      <Route path="/about" element={<Education />} />
       <Route path="/musicians/:id" element={<MusicianPage />} />
       <Route path="/archive/:id" element={<ArchiveDetails />} />
       <Route path="/gallery/:id" element={<GalleryAlbum />} />
       
-      {/* Все остальные несуществующие адреса перенаправляем на 404 */}
+      {/* Защита от битых URL */}
       <Route path="*" element={<Error404 />} />
     </Routes>
   );
