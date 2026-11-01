@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import AppRouter from "./containers/AppRouter";
 import "./App.css";
+import CookieConsent from "./components/cookieConsent/CookieConsent";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
           <AppRouter />
         </main>
         <Footer />
+        <CookieConsent />
       </div>
     </BrowserRouter>
   );

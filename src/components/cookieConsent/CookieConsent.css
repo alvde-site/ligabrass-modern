@@ -1,0 +1,133 @@
+/* ==========================================================================
+   Полупрозрачное уведомление о Cookie (Эффект матового стекла)
+   ========================================================================== */
+.cookie-banner-root {
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99999; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  pointer-events: none; /* Пропускает клики сквозь пустую зону */
+}
+
+.cookie-banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  max-width: 800px; 
+  padding: 14px 20px;
+
+  /* Элегантный Frosted Glass на базе дизайн-токенов */
+  background-color: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* Тонкая, едва заметная платиновая рамка без !important */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+
+  /* Плавный выезд снизу */
+  animation: cookieSlideUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.cookie-text-block {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cookie-emoji {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.cookie-description {
+  font-family: var(--font-regular);
+  color: var(--color-text-silver);
+  状况: 400;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0;
+  text-align: left;
+  letter-spacing: -0.1px;
+}
+
+/* Фирменная латунная кнопка */
+.cookie-accept-btn {
+  font-family: var(--font-medium);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: var(--color-brass);
+  color: var(--color-anthracite);
+  opacity: 0.9;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.cookie-accept-btn:hover {
+  transform: translateY(-1px);
+  opacity: 1;
+  background-color: #f5c463; /* Чуть более яркая латунь на ховере */
+}
+
+.cookie-accept-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes cookieSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   📱 Мобильная адаптивность (до 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .cookie-banner-root {
+    bottom: 16px;
+    padding: 0 16px;
+  }
+
+  .cookie-banner-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .cookie-text-block {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cookie-description {
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .cookie-accept-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
