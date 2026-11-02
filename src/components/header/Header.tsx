@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { settings } from "../../data/settings";
-import MainLogo from "../mainLogo/MainLogo";
+// import MainLogo from "../mainLogo/MainLogo";
+import SnowMainLogo from "../mainLogo/SnowMainLogo";
 import "./Header.css";
 
 const Header: React.FC = () => {
@@ -25,7 +26,11 @@ const Header: React.FC = () => {
     <div>
       <header className="header">
         <NavLink to={homeLink} className="logo" onClick={closeMenu}>
-          <MainLogo
+          {/* <MainLogo
+            size="100px"
+            style={{ transition: "color 0.3s ease-in-out" }}
+          /> */}
+          <SnowMainLogo
             size="100px"
             style={{ transition: "color 0.3s ease-in-out" }}
           />

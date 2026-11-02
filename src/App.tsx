@@ -6,6 +6,7 @@ import AppRouter from "./containers/AppRouter";
 import "./App.css";
 import CookieConsent from "./components/cookieConsent/CookieConsent";
 import TopButton from "./components/topButton/TopButton";
+import SnowEffect from "./components/snow/SnowEffect";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Footer />
         <CookieConsent />
         <TopButton /> 
+        <SnowEffect /> {/* Снег пошел! */}
       </div>
     </BrowserRouter>
   );

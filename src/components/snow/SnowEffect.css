@@ -1,0 +1,61 @@
+.snow-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998; /* Строго под мобильным меню шапки, но поверх остального контента */
+  pointer-events: none; /* Снег не мешает кликать по кнопкам и ссылкам сайта */
+  overflow: hidden;
+}
+
+/* Создаем текстуру снега разного диаметра с помощью радиальных CSS-градиентов */
+.snow-layer {
+  position: absolute;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  background-repeat: repeat;
+}
+
+/* Крупный, пушистый ближний снег */
+.snow-layer-fast {
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 1px, transparent 2px),
+    radial-gradient(circle at 75% 60%, rgba(255, 255, 255, 0.4) 1.5px, transparent 2.5px);
+  background-size: 400px 400px;
+  animation: snowFall 12s linear infinite;
+}
+
+/* Средний аккуратный снег */
+.snow-layer-medium {
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.3) 1px, transparent 2px),
+    radial-gradient(circle at 85% 40%, rgba(255, 255, 255, 0.3) 1px, transparent 2px),
+    radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.3) 1px, transparent 2px);
+  background-size: 300px 300px;
+  animation: snowFall 20s linear infinite;
+}
+
+/* Тонкая, едва заметная задняя снежная пыль */
+.snow-layer-slow {
+  background-image: 
+    radial-gradient(circle at 30% 45%, rgba(255, 255, 255, 0.15) 0.8px, transparent 1.5px),
+    radial-gradient(circle at 60% 85%, rgba(255, 255, 255, 0.15) 0.8px, transparent 1.5px);
+  background-size: 250px 250px;
+  animation: snowFall 32s linear infinite;
+}
+
+/* Плавное падение сверху вниз с легким покачиванием по горизонтали */
+@keyframes snowFall {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(50vh) translateX(15px); /* Легкий ветерок вправо */
+  }
+  100% {
+    transform: translateY(100vh) translateX(0);
+  }
+}

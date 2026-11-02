@@ -1,0 +1,103 @@
+.raw_logo {
+  height: 305px;
+  width: 440px;
+}
+
+.music-slur {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw-line 1.2s ease-out forwards 0.2s;
+}
+
+.sig-letter {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  animation: draw-line 0.6s linear forwards;
+}
+
+.sig-dot {
+  animation:
+    pop-dot 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+    brassGlow 3s ease-in-out infinite 3s;
+}
+
+/* Очередность появления букв и нот в SPA-автографе */
+.sig-l { animation-delay: 0.8s; }
+.dot-l { animation-delay: 1.3s; }
+.sig-i { animation-delay: 1.1s; }
+.sig-g { animation-delay: 1.4s; }
+.sig-a1 { animation-delay: 1.7s; }
+.dot-a1 { animation-delay: 2.2s; }
+
+.sig-b { animation-delay: 2.1s; }
+.sig-r { animation-delay: 2.4s; }
+.sig-a2 { animation-delay: 2.7s; }
+.dot-a2 { animation-delay: 3.2s; }
+.sig-s1 { animation-delay: 3s; }
+.sig-s2 { animation-delay: 3.3s; }
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pop-dot {
+  to {
+    transform: scale(1);
+    fill: url(#brassGradient);
+  }
+}
+
+@keyframes brassGlow {
+  0%, 100% { filter: drop-shadow(0 0 0px transparent); opacity: 1; }
+  50% { filter: drop-shadow(0 0 4px var(--color-brass)); opacity: 0.8; }
+}
+
+/* ==========================================================================
+   🎅 СТАБИЛЬНАЯ CSS-АНИМАЦИЯ: Поочередное падение 15 пушистых помпончиков
+   ========================================================================== */
+
+.ny-flake {
+  opacity: 0;
+  /* Изначально смещаем хлопья по вертикали на 50px вверх относительно их центра */
+  transform: translateY(-50px);
+  /* Используем чистую CSS-анимацию падения без прыжков */
+  animation: singleFlakeDrop 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes singleFlakeDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    /* Хлопья возвращаются в свои исходные координаты на векторе и застывают */
+    transform: translateY(0);
+  }
+}
+
+/* ⏱️ СТРОГАЯ ОЧЕРЕДНОСТЬ: Помпончики сыпятся по одному, собираясь в сугроб */
+.f-1  { animation-delay: 2.2s; }
+.f-2  { animation-delay: 2.3s; }
+.f-3  { animation-delay: 2.4s; }
+.f-4  { animation-delay: 2.5s; }
+.f-5  { animation-delay: 2.6s; }
+
+.f-6  { animation-delay: 2.7s; }
+.f-7  { animation-delay: 2.8s; }
+.f-8  { animation-delay: 2.9s; }
+.f-9  { animation-delay: 3.0s; }
+.f-10 { animation-delay: 3.1s; }
+
+.f-11 { animation-delay: 3.2s; }
+.f-12 { animation-delay: 3.3s; }
+
+/* Финальные хлопья, обволакивающие края буквы Л */
+.f-13 { animation-delay: 3.4s; }
+.f-14 { animation-delay: 3.5s; }
+.f-15 { animation-delay: 3.6s; }

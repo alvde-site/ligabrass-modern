@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import LogoLoader from "../../components/loader/LogoLoader"; // Импортируем анимированный плеер букв
+// import LogoLoader from "../../components/loader/LogoLoader"; // Импортируем анимированный плеер букв
+import SnowLogoLoader from "../../components/loader/SnowLogoLoader";
 import "./Splash.css";
 
 const AnimatedSplash: React.FC = () => {
@@ -8,7 +9,8 @@ const AnimatedSplash: React.FC = () => {
     <div className="logo_wrapper">
       <div className="screen">
         <div id="logo">
-          <LogoLoader /> {/* Запустили прорисовку духового автографа Лиги Брасс */}
+          {/* <LogoLoader /> Запустили прорисовку автографа Лиги Брасс */}
+          <SnowLogoLoader />
         </div>
       </div>
     </div>
