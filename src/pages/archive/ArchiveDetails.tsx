@@ -4,7 +4,6 @@ import { experienceData } from "../../data/experience";
 import { projectsHeader } from "../../data/projects";
 import "./ArchiveDetails.css";
 
-// Расширенный локальный интерфейс для пуленепробиваемого рендеринга сквозного контента
 interface DetailedItem {
   id: string;
   type: "news" | "archive" | "program";
@@ -81,13 +80,12 @@ const ArchiveDetails: React.FC = () => {
   }
 
   const getPosterUrl = (posterPath: string) => {
-    // 1. Намертво очищаем путь от старых префиксов папок, если они зашиты в базу данных
+    // 1. Очищаем путь от старых префиксов папок, если они зашиты в базу данных
     const cleanPath = posterPath
       .replace("concerts/", "")
       .replace("musicians/", "");
 
     // 2. Умное автоматическое определение подпапки на основе типа контента
-    // Если тип "program" или "news" или "archive" — картинка лежит в concerts, иначе в musicians
     const subFolder =
       item?.type === "program" ||
       item?.type === "news" ||
@@ -97,8 +95,8 @@ const ArchiveDetails: React.FC = () => {
 
     // 3. Формируем чистый абсолютный путь от корня src для сборщика Vite
     return new URL(
-      `../../assets/images/${subFolder}/${cleanPath}`,
-      import.meta.url,
+      `/src/assets/images/${subFolder}/${cleanPath}`,
+      window.location.origin
     ).href;
   };
 
@@ -160,30 +158,7 @@ const ArchiveDetails: React.FC = () => {
 
             <p className="article-lead-desc">{item.description}</p>
 
-            {/* 🎼 АДАПТИВНЫЙ БЛОК I: Концертная программа (Список произведений) */}
-            {item.type === "program" && item.programList && (
-              <div className="article-special-section">
-                <h4 className="section-inner-title">Исполняемая программа:</h4>
-                <ul className="music-repertoire-list">
-                  {item.programList.map((track, idx) => (
-                    <li key={idx}>{track}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* 📰 АДАПТИВНЫЙ БЛОК II: Текстовые статьи / Новости / Развернутые описания */}
-            {item.fullStory && (
-              <div className="article-special-section">
-                {item.fullStory.map((paragraph, idx) => (
-                  <p key={idx} className="story-paragraph">
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            )}
-
-            {/* 💬 АДАПТИВНЫЙ БЛОК III: Архив выступлений (Рецензии и отзывы) */}
+            {/* 💬 НОМЕР I: Рецензии и отзывы (Архив выступлений) */}
             {item.type === "archive" && item.reviews && (
               <div className="article-special-section">
                 <h4 className="section-inner-title">Рецензии и отзывы:</h4>
@@ -195,6 +170,29 @@ const ArchiveDetails: React.FC = () => {
                     </blockquote>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* 🎼 НОМЕР II: Концертная программа (Список произведений) */}
+            {item.type === "program" && item.programList && (
+              <div className="article-special-section">
+                <h4 className="section-inner-title">Исполняемая программа:</h4>
+                <ul className="music-repertoire-list">
+                  {item.programList.map((track, idx) => (
+                    <li key={idx}>{track}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* 📰 НОМЕР III: Текстовые статьи / Новости / Развернутые описания хроники */}
+            {item.fullStory && (
+              <div className="article-special-section">
+                {item.fullStory.map((paragraph, idx) => (
+                  <p key={idx} className="story-paragraph">
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             )}
 
