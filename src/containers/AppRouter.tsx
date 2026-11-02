@@ -28,8 +28,7 @@ const AppRouter: React.FC = () => {
 
   return (
     <Routes>
-      {/* Главный роут с проверкой сплэш-экрана */}
-      <Route
+       <Route
         path="/"
         element={
           settings.isSplash ? (
