@@ -1,27 +1,30 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { useLocation } from "react-router-dom"; // Хук теперь сработает идеально!
+import AppRouter from "./containers/AppRouter";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import AppRouter from "./containers/AppRouter";
-import "./App.css";
 import CookieConsent from "./components/cookieConsent/CookieConsent";
 import TopButton from "./components/topButton/TopButton";
 import SnowEffect from "./components/snow/SnowEffect";
 
 const App: React.FC = () => {
+  const location = useLocation();
+  const isSplashPage = location.pathname === "/" || location.pathname === "/splash";
+
   return (
-    <BrowserRouter>
-      <div className="page__main">
-        <Header />
-        <main className="page-content">
-          <AppRouter />
-        </main>
-        <Footer />
-        <CookieConsent />
-        <TopButton /> 
-        <SnowEffect /> {/* Снег пошел! */}
-      </div>
-    </BrowserRouter>
+    <div className="app-container">
+      {!isSplashPage && <Header />}
+      
+      <main className="main-content">
+        <AppRouter />
+      </main>
+      
+      {!isSplashPage && <Footer />}
+      {!isSplashPage && <TopButton />}
+      {!isSplashPage && <CookieConsent />}
+      
+      <SnowEffect />
+    </div>
   );
 };
 
