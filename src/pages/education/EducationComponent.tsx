@@ -1,6 +1,6 @@
 import React from "react";
 import Educations from "../../containers/education/Educations";
-import aboutBarImage from "../../assets/images/about-bar.jpg"; // Безопасный ESM импорт картинки в Vite
+import aboutBarImage from "../../assets/images/about.webp";
 import "./EducationComponent.css";
 
 const Education: React.FC = () => {
