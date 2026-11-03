@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { settings } from "../data/settings";
+import { useMetrikaHit } from "../hooks/useMetrikaHit";
 import Home from "../pages/home/HomeComponent";
 import Projects from "../pages/projects/Projects";
 import Experience from "../pages/experience/Experience";
@@ -14,19 +15,11 @@ import Splash from "../pages/splash/Splash";
 import Error404 from "../pages/errors/error404/Error";
 
 const AppRouter: React.FC = () => {
-  const location = useLocation();
-
-  // Автоматический трекинг переходов для Яндекс Метрики и Вебвизора
-  useEffect(() => {
-    if (typeof window !== "undefined" && (window as any).ym) {
-      const counterId = 113839839; // ID счетчика
-      (window as any).ym(counterId, "hit", location.pathname + location.search);
-    }
-  }, [location]);
+  useMetrikaHit();
 
   return (
     <Routes>
-       <Route
+      <Route
         path="/"
         element={
           settings.isSplash ? (
@@ -44,14 +37,14 @@ const AppRouter: React.FC = () => {
       <Route path="/archive" element={<Navigate to="/experience" replace />} />
       <Route path="/opensource" element={<Opensource />} />
       <Route path="/contact" element={<Contact />} />
-      
+
       {/* Подключение временных интерактивных заглушек */}
       {settings.isSplash && <Route path="/splash" element={<Splash />} />}
       <Route path="/about" element={<Education />} />
       <Route path="/musicians/:id" element={<MusicianPage />} />
       <Route path="/archive/:id" element={<ArchiveDetails />} />
       <Route path="/gallery/:id" element={<GalleryAlbum />} />
-      
+
       {/* Защита от битых URL */}
       <Route path="*" element={<Error404 />} />
     </Routes>
