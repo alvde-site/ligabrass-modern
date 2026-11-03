@@ -5,23 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Основные метатеги поисковой оптимизации (SEO) -->
-    <meta name="title" content="Лига Брасс — Ансамбль медных духовых инструментов" />
-    <meta name="description" content="Официальный сайт творческого коллектива Лига Брасс. Ансамбль солистов, представляющий классический состав медных духовых инструментов и академический музыкальный репертуар." />
-    <meta name="keywords" content="лига brass, брасс квинтет, медные духовые, ансамбль солистов, духовой квинтет, академическая музыка, труба, тромбон, валторна, туба" />
+    <meta
+      name="title"
+      content="Лига Брасс — Ансамбль медных духовых инструментов"
+    />
+    <meta
+      name="description"
+      content="Официальный site творческого коллектива Лига Брасс. Ансамбль солистов, представляющий классический состав медных духовых инструментов и академический музыкальный репертуар."
+    />
+    <meta
+      name="keywords"
+      content="лига brass, брасс квинтет, медные духовые, ансамбль солистов, духовой квинтет, академическая музыка, труба, тромбон, валторна, туба"
+    />
     <meta name="author" content="Лига Брасс" />
 
     <!-- Глобальная разметка Open Graph (OG) -->
-    <meta name="og:title" content="Лига Брасс — Ансамбль медных духовых инструментов" />
-    <meta name="og:type" content="website" />
-    <meta name="og:description" content="Официальный сайт творческого коллектива. Хроника событий, архив концертов, репертуарные программы и медиагалерея." />
+    <meta
+      property="og:title"
+      content="Лига Брасс — Ансамбль медных духовых инструментов"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Официальный сайт творческого коллектива. Хроника событий, архив концертов, репертуарные программы и медиагалерея."
+    />
     <meta property="og:image" content="/icons/og-image.jpg" />
     <meta property="og:site_name" content="Liga Brass" />
 
     <!-- Пакет иконок -->
-    <link rel="icon" type="image/png" href="/icons/favicon-96x96.png" sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/icons/favicon-96x96.png"
+      sizes="96x96"
+    />
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <link rel="shortcut icon" href="/icons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon.png"
+    />
 
     <!-- Веб-манифест PWA-приложения -->
     <link rel="manifest" href="/icons/site.webmanifest" />
@@ -31,24 +55,62 @@
 
     <!-- ИСПРАВЛЕННЫЙ СКРИПТ-ПЕРЕХВАТЧИК РОУТИНГА ДЛЯ GITHUB PAGES -->
     <script type="text/javascript">
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&') 
-          }).join('?');
-          window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash,
           );
         }
-      }(window.location));
+      })(window.location);
     </script>
-    <script type="module" crossorigin src="/assets/index-BnSikU3t.js"></script>
+
+    <!-- Яндекс Метрика (Инициализация глобальной функции ym) -->
+    <script type="text/javascript">
+      (function (m, e, t, r, i, k, a) {
+        m[i] =
+          m[i] ||
+          function () {
+            (m[i].a = m[i].a || []).push(arguments);
+          };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < e.length; j++) {
+          if (e[j].src === r) {
+            return;
+          }
+        }
+        ((k = e.createElement(t)),
+          (a = e.getElementsByTagName(t)),
+          (k.async = 1),
+          (k.src = r),
+          a.parentNode.insertBefore(k, a));
+      })(window, document, "script", "https://yandex.ru", "ym");
+
+      ym(113839839, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        webvisor: true,
+        defer: true /* Отключает автоматический первый хит, отдавая управление React-роутеру */,
+      });
+    </script>
+    <script type="module" crossorigin src="/assets/index-CQTcamZt.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CWDmXaV7.css">
   </head>
   <body>
-    <noscript>Для работы этого приложения необходимо включить JavaScript.</noscript>
+    <noscript
+      >Для работы этого приложения необходимо включить JavaScript.</noscript
+    >
     <div id="root"></div>
-    
+
     <!-- Точка входа Vite -->
   </body>
 </html>
