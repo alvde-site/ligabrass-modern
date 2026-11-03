@@ -19,7 +19,7 @@ const AppRouter: React.FC = () => {
   // Автоматический трекинг переходов для Яндекс Метрики и Вебвизора
   useEffect(() => {
     if (typeof window !== "undefined" && (window as any).ym) {
-      const counterId = 113839839; // TODO: Замените на реальный ID счетчика коллектива
+      const counterId = 113839839; // ID счетчика
       (window as any).ym(counterId, "hit", location.pathname + location.search);
     }
   }, [location]);
