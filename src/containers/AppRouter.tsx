@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { settings } from "../data/settings";
-
-// НАСТОЯЩИЕ ИСПРАВЛЕННЫЕ СТРАНИЦЫ (ИМПОРТИРУЕМ ГОТОВЫЙ СТЕК ШАГА 5 И 6):
 import Home from "../pages/home/HomeComponent";
 import Projects from "../pages/projects/Projects";
 import Experience from "../pages/experience/Experience";
@@ -43,6 +41,7 @@ const AppRouter: React.FC = () => {
       <Route path="/home" element={<Home />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/experience" element={<Experience />} />
+      <Route path="/archive" element={<Navigate to="/experience" replace />} />
       <Route path="/opensource" element={<Opensource />} />
       <Route path="/contact" element={<Contact />} />
       
