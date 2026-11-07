@@ -25,8 +25,10 @@ export const certifications: ConcertTicket[] = [
         "Александр Демиденко",
         "Вильнур Самигуллин",
       ],
-      more_button: "https://ligabrass.timepad.ru/event/4292396/", 
-      buy_button: "https://ligabrass.timepad.ru/event/4292396/", 
+      more_button: "", 
+      buy_button: "",
+    //   more_button: "https://ligabrass.timepad.ru/event/4292396/", 
+    //   buy_button: "https://ligabrass.timepad.ru/event/4292396/", 
       concert_poster: "concerts/jazz-sfera.jpg",
     },
 ];
