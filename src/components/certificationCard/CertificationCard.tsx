@@ -36,9 +36,12 @@ const CertificationCard: React.FC<CertificationCardProps> = ({
       ? `${contentRef.current.scrollHeight}px`
       : "0px";
 
-  // Пуленепробиваемый метод динамического получения пути к картинкам в Vite
   const getPosterUrl = (posterPath: string) => {
-    return new URL(`../../assets/images/${posterPath}`, import.meta.url).href;
+    const cleanPath = posterPath.replace("concerts/", "");
+
+    // Формируем чистый относительный путь для сборщика Vite через import.meta.url
+    return new URL(`../../assets/images/concerts/${cleanPath}`, import.meta.url)
+      .href;
   };
 
   return (
