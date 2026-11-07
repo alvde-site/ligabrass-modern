@@ -1,6 +1,3 @@
-/* ==========================================================================
-   Базовый контейнер карточки (Плотный матовый графитовый стиль)
-   ========================================================================== */
 .cert-card {
   display: flex;
   flex-direction: column;
@@ -15,11 +12,10 @@
               background-color 0.3s ease;
   overflow: hidden;
   width: 100%;
+  cursor: pointer;
+  position: relative;
 }
 
-/* ==========================================================================
-   Интерактивные стили: HOVER (Наведение)
-   ========================================================================== */
 .cert-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
@@ -27,9 +23,6 @@
   border-color: rgba(228, 168, 52, 0.5);
 }
 
-/* ==========================================================================
-   Интерактивные стили: ACTIVE (Раскрытая карточка)
-   ========================================================================== */
 .cert-card.active {
   transform: translateY(0);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
@@ -37,12 +30,10 @@
   background-color: rgba(255, 255, 255, 0.06);
 }
 
-/* ==========================================================================
-   Верхняя строчка: Дата и Время
-   ========================================================================== */
 .content {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
 }
 
 .cert-header {
@@ -61,6 +52,11 @@
   font-size: 38px;
   font-weight: 500;
   letter-spacing: -1px;
+}
+
+.cert-header__right-block {
+  display: flex;
+  align-items: center;
 }
 
 .cert-header__time-wrapper {
@@ -85,11 +81,59 @@
   font-weight: 500;
 }
 
-/* ==========================================================================
-   Тело карточки: Название концерта и Зал
-   ========================================================================== */
+.cert-card__edge-divider {
+  position: absolute;
+  bottom: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background-color: transparent;
+  padding: 0;
+  height: 22px;
+}
+
+.cert-card__chevron-icon {
+  color: var(--color-text-silver);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s ease;
+}
+
+.cert-card:hover .cert-card__chevron-icon {
+  color: var(--color-brass);
+}
+
+.cert-card.active .cert-card__chevron-icon {
+  transform: rotate(-180deg);
+  color: var(--color-brass);
+}
+
+.cert-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-brass);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-card:hover::after {
+  opacity: 0.3;
+}
+
+.cert-card.active::after {
+  opacity: 1;
+}
+
 .cert-body {
-  padding: 16px 24px 24px 24px;
+  padding: 24px 24px 24px 24px;
 }
 
 .cert-body-title {
@@ -108,9 +152,6 @@
   letter-spacing: 0.2px;
 }
 
-/* ==========================================================================
-   Раскрывающийся блок аккордеона
-   ========================================================================== */
 .concert {
   overflow: hidden;
   height: 0;
@@ -184,13 +225,10 @@
   border-radius: 50%;
 }
 
-/* ==========================================================================
-   Блок кнопок (Стильные латунные кнопки с защитой под Mozilla Firefox)
-   ========================================================================== */
 .concert__buttons {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap; /* Страховка сетки на переломе разрешений */
+  flex-wrap: wrap;
   justify-content: flex-start;
   gap: 12px;
   margin-top: 6px;
@@ -199,7 +237,7 @@
 }
 
 .concert-btn {
-  display: inline-flex; /* ИСПРАВЛЕНО: Плотный, контролируемый флекс вместо inline-block */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -214,11 +252,9 @@
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-  
-  /* 🌟 ПУЛЕНЕПРОБИВАЕМЫЙ НАБОР ДЛЯ МОБИЛЬНОГО FIREFOX: */
   box-sizing: border-box;
   max-width: 100%;
-  white-space: normal; /* Позволяет тексту переноситься, если экран критически мал */
+  white-space: normal;
 }
 
 .concert-btn:hover {
@@ -226,9 +262,6 @@
   color: var(--color-brass);
 }
 
-/* ==========================================================================
-   Афиша / Постер концерта
-   ========================================================================== */
 .description__poster-wrap {
   display: flex;
   justify-content: center;
@@ -256,9 +289,6 @@
   font-size: 3rem;
 }
 
-/* ==========================================================================
-   📱 Мобильная адаптивность
-   ========================================================================== */
 @media (max-width: 768px) {
   .cert-header {
     padding: 20px 20px 8px 20px;
@@ -273,7 +303,7 @@
   }
 
   .cert-body {
-    padding: 8px 20px 20px 20px;
+    padding: 24px 20px 20px 20px;
   }
 
   .cert-body-title {
