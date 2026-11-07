@@ -185,32 +185,40 @@
 }
 
 /* ==========================================================================
-   Блок кнопок (Стильные латунные кнопки)
+   Блок кнопок (Стильные латунные кнопки с защитой под Mozilla Firefox)
    ========================================================================== */
 .concert__buttons {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Страховка сетки на переломе разрешений */
   justify-content: flex-start;
   gap: 12px;
   margin-top: 6px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .concert-btn {
-  display: inline-block;
+  display: inline-flex; /* ИСПРАВЛЕНО: Плотный, контролируемый флекс вместо inline-block */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 10px 22px;
   font-family: var(--font-medium);
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
-  text-align: center;
   color: #121212;
   background-color: var(--color-brass);
   border: 1px solid var(--color-brass);
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  
+  /* 🌟 ПУЛЕНЕПРОБИВАЕМЫЙ НАБОР ДЛЯ МОБИЛЬНОГО FIREFOX: */
+  box-sizing: border-box;
+  max-width: 100%;
+  white-space: normal; /* Позволяет тексту переноситься, если экран критически мал */
 }
 
 .concert-btn:hover {
