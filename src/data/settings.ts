@@ -26,7 +26,7 @@ export const greeting: GreetingData = {
 export const homeSocials: SocialLink[] = [
   {
     name: "VK",
-    link: "https://vk.ru/ligabrass",
+    link: "https://m.vk.ru/club242974566",
     fontAwesomeIcon: "fa-vk",
     backgroundColor: "#0077FF",
   },
