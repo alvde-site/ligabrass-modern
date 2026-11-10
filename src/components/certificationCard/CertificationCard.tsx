@@ -2,8 +2,16 @@ import React, { useRef } from "react";
 import type { ConcertTicket } from "../../types/portfolio";
 import "./CertificationCard.css";
 
-const SimpleButton: React.FC<{ text: string; href: string }> = ({ text, href }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="concert-btn">
+const SimpleButton: React.FC<{ text: string; href: string }> = ({
+  text,
+  href,
+}) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="concert-btn"
+  >
     {text}
   </a>
 );
@@ -14,14 +22,23 @@ interface CertificationCardProps {
   onToggle: () => void;
 }
 
-const CertificationCard: React.FC<CertificationCardProps> = ({ certificate, isOpen, onToggle }) => {
+const CertificationCard: React.FC<CertificationCardProps> = ({
+  certificate,
+  isOpen,
+  onToggle,
+}) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const currentHeight = isOpen && contentRef.current ? `${contentRef.current.scrollHeight}px` : "0px";
+  const currentHeight = isOpen
+    ? contentRef.current
+      ? `${contentRef.current.scrollHeight}px`
+      : "auto"
+    : "0px";
 
   const getPosterUrl = (posterPath: string) => {
     const cleanPath = posterPath.replace("concerts/", "");
-    return new URL(`../../assets/images/concerts/${cleanPath}`, import.meta.url).href;
+    return new URL(`../../assets/images/concerts/${cleanPath}`, import.meta.url)
+      .href;
   };
 
   return (
@@ -50,8 +67,20 @@ const CertificationCard: React.FC<CertificationCardProps> = ({ certificate, isOp
         {/* 🌟 ПЕРЕНЕСЕНО СЮДА: Шеврон садится точно по центру разделительной линии */}
         <div className="cert-card__edge-divider">
           <span className="cert-card__chevron-icon">
-            <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://w3.org">
-              <path d="M1 1.5L7 7.5L13 1.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg
+              width="14"
+              height="9"
+              viewBox="0 0 14 9"
+              fill="none"
+              xmlns="http://w3.org"
+            >
+              <path
+                d="M1 1.5L7 7.5L13 1.5"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </span>
         </div>
@@ -81,27 +110,29 @@ const CertificationCard: React.FC<CertificationCardProps> = ({ certificate, isOp
               <p className="concert__info">{certificate.concert_info}</p>
             )}
 
-            {certificate.concert_workslist && certificate.concert_workslist.length > 0 && (
-              <div className="concert__section">
-                <h4 className="concert__title">Программа концерта:</h4>
-                <ul className="concert__list">
-                  {certificate.concert_workslist.map((work, i) => (
-                    <li key={i}>{work}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            {certificate.concert_workslist &&
+              certificate.concert_workslist.length > 0 && (
+                <div className="concert__section">
+                  <h4 className="concert__title">Программа концерта:</h4>
+                  <ul className="concert__list">
+                    {certificate.concert_workslist.map((work, i) => (
+                      <li key={i}>{work}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-            {certificate.concert_artists && certificate.concert_artists.length > 0 && (
-              <div className="concert__section">
-                <h4 className="concert__title">Участники:</h4>
-                <ul className="concert__list">
-                  {certificate.concert_artists.map((artist, i) => (
-                    <li key={i}>{artist}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            {certificate.concert_artists &&
+              certificate.concert_artists.length > 0 && (
+                <div className="concert__section">
+                  <h4 className="concert__title">Участники:</h4>
+                  <ul className="concert__list">
+                    {certificate.concert_artists.map((artist, i) => (
+                      <li key={i}>{artist}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
             {certificate.concert_address && (
               <div className="concert__section">
@@ -111,12 +142,21 @@ const CertificationCard: React.FC<CertificationCardProps> = ({ certificate, isOp
             )}
 
             {(certificate.more_button || certificate.buy_button) && (
-              <div className="concert__buttons" onClick={(e) => e.stopPropagation()}>
+              <div
+                className="concert__buttons"
+                onClick={(e) => e.stopPropagation()}
+              >
                 {certificate.more_button && (
-                  <SimpleButton text="Подробнее" href={certificate.more_button} />
+                  <SimpleButton
+                    text="Подробнее"
+                    href={certificate.more_button}
+                  />
                 )}
                 {certificate.buy_button && (
-                  <SimpleButton text="Купить билет" href={certificate.buy_button} />
+                  <SimpleButton
+                    text="Купить билет"
+                    href={certificate.buy_button}
+                  />
                 )}
               </div>
             )}

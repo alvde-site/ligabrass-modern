@@ -184,6 +184,7 @@ export interface MediaPageData {
 }
 
 export interface ConcertTicket {
+  id: string,
   title: string;
   alt_name: string;
   concert_city: string;
