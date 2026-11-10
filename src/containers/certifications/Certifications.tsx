@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { certifications } from "../../data/certifications";
 import CertificationCard from "../../components/certificationCard/CertificationCard";
 import "./Certifications.css";
@@ -12,14 +12,8 @@ const parseConcertDateTime = (dateStr: string, timeStr: string, yearStr: string)
 };
 
 const Certifications: React.FC = () => {
-  const [activeCardId, setActiveCardId] = useState<string | number | null>(null);
   const now = new Date();
 
-  const handleToggleCard = (cardId: string | number) => {
-    setActiveCardId((prevId) => (prevId === cardId ? null : cardId));
-  };
-
-  // 1. Фильтруем массив: оставляем только актуальные будущие концерты
   const activeConcerts = certifications.filter((cert) => {
     const concertDateTime = parseConcertDateTime(
       cert.concert_date,
@@ -29,7 +23,22 @@ const Certifications: React.FC = () => {
     return concertDateTime >= now;
   });
 
-  // 2. Если концертов нет или все они прошли (как концерт 25.10.2026) — скрываем раздел
+  const getFirstCardId = (): string | number | null => {
+    if (activeConcerts.length === 0) return null;
+    const firstCert = activeConcerts[0];
+    return 'id' in firstCert && firstCert.id ? (firstCert.id as string | number) : 0;
+  };
+
+  const [activeCardId, setActiveCardId] = useState<string | number | null>(getFirstCardId());
+
+  useEffect(() => {
+    setActiveCardId(getFirstCardId());
+  }, [certifications]);
+
+  const handleToggleCard = (cardId: string | number) => {
+    setActiveCardId((prevId) => (prevId === cardId ? null : cardId));
+  };
+
   if (activeConcerts.length === 0) {
     return null;
   }
