@@ -10,27 +10,21 @@ const HomeComponent: React.FC = () => {
   const location = useLocation();
   const showAfisha = checkActiveConcerts(certifications);
 
-  // 🪄 ПУЛЕНЕПРОБИВАЕМЫЙ КРОСС-СТРАНИЧНЫЙ ДОСКРОЛЛ С УЧЕТОМ ЗАГРУЗКИ КОНТЕНТА
   useEffect(() => {
-    if (location.hash === "#afisha" && showAfisha) {
-      // Увеличиваем задержку до 400мс, давая анимации Greeting полностью встать в DOM
-      const timer = setTimeout(() => {
-        const element = document.getElementById("afisha");
-        if (element) {
-          const headerOffset = 90; // Наш проверенный мобильный отступ под шапку
-          const elementPosition = element.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    if (!location.hash) return;
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
-        }
-      }, 400);
+    const id = location.hash.slice(1); // "#afisha" -> "afisha"
 
-      return () => clearTimeout(timer);
-    }
-  }, [location.pathname, location.hash, showAfisha]); // Добавили location.pathname в слежение
+    // Даём React дорисовать секцию, затем крутим
+    const timer = setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [location]);
 
   return (
     <div className="home-page-container fade-in-up">
