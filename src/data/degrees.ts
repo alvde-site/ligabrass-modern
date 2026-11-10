@@ -14,15 +14,15 @@ export const degrees: DegreesData = {
       logo_path: "musicians/bakharev_trumpet.jpg",
     },
     {
-      title: "Георгий Гринемайер",
+      title: "Афанасий Соколов",
       subtitle: "Солист / Вторая труба",
       duration: "Творческая единица",
       descriptions: [
-        "Обеспечивает ансамблю идеальный баланс и вторую партию.",
-        "Мастер точных вступлений и деликатного интонирования.",
+        "Обладатель Гран-при конкурса им. Щелокова и гранта Президента РФ.",
+        "Отвечает за безупречный ансамблевый баланс и ювелирную точность в общем созвучии квинтета.",
       ],
-      website_link: "/musicians/grinemayer",
-      logo_path: "musicians/grinemayer_trumpet.jpg",
+      website_link: "/musicians/sokolov",
+      logo_path: "musicians/sokolov_trumpet.jpg",
     },
     {
       title: "Дмитрий Береговский",
