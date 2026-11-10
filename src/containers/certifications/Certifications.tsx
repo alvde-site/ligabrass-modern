@@ -35,7 +35,7 @@ const Certifications: React.FC = () => {
   }
 
   return (
-    <section className="certs-main-section" id="certs">
+    <section className="certs-main-section" id="afisha">
       <div className="certs-header-div">
         <h2 className="certs-header">
           Ближайшие выступления
@@ -43,10 +43,8 @@ const Certifications: React.FC = () => {
       </div>
       <div className="certs-body-div">
         {activeConcerts.map((cert, index) => {
-          // Генерируем пуленепробиваемый ID для аккордеона
           const cardId = 'id' in cert && cert.id ? (cert.id as string | number) : index;
-          const isOpen = activeCardId === cardId;
-          
+          const isOpen = activeCardId === cardId;         
           return (
             <CertificationCard
               key={cardId}
