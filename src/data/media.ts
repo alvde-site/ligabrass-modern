@@ -14,18 +14,6 @@ export const mediaPageData: MediaPageData = {
   ],
   albumList: [
     {
-      id: "our-days",
-      title: "Наши будни",
-      description:
-        "Концерты, репетиции, дорожные хроники и живые эмоции коллектива вне строгих филармонических рамок.",
-      cover: "everyday_life.jpg",
-      photos: [
-        { src: "25.10_01.jpg", alt: "Концерт в Колонном" },
-        { src: "25.10_02.jpg", alt: "Концерт в Колонном" },
-        { src: "24.10_01.jpg", alt: "Концерт в Lemon tree" },
-      ],
-    },
-    {
       id: "mmdm-new-season", // Уникальный ID для адресной строки браузера (/gallery/mmdm-new-season)
       title: "Обновленный состав «Лиги Брасс»",
       description:
@@ -56,6 +44,18 @@ export const mediaPageData: MediaPageData = {
           src: "mmdm_7.webp",
           alt: "Обновленный состав Лиги Брасс в фойе ММДМ",
         },
+      ],
+    },
+    {
+      id: "our-days",
+      title: "Наши будни",
+      description:
+        "Концерты, репетиции, дорожные хроники и живые эмоции коллектива вне строгих филармонических рамок.",
+      cover: "everyday_life.jpg",
+      photos: [
+        { src: "25.10_01.jpg", alt: "Концерт в Колонном" },
+        { src: "25.10_02.jpg", alt: "Концерт в Колонном" },
+        { src: "24.10_01.jpg", alt: "Концерт в Lemon tree" },
       ],
     },
   ],
